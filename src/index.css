@@ -1,16 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --bg-color: #000000;
   --text-primary: #F5F5F7;
   --text-secondary: #86868B;
   --accent: #E5E5E5;
+
+  /* shadcn/ui theme variables */
+  --background: 0 0% 0%;
+  --foreground: 0 0% 96.1%;
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 96.1%;
+  --popover: 0 0% 10%;
+  --popover-foreground: 0 0% 96.1%;
+  --primary: 214 100% 44%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 0 0% 96.1%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 52%;
+  --accent: 0 0% 15%;
+  --accent-foreground: 0 0% 96.1%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 96.1%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 214 100% 44%;
+  --radius: 0.5rem;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -58,7 +86,65 @@ img {
   align-items: center;
   padding: 4rem 2rem;
   position: relative;
+  transition: opacity 0.8s ease-in-out;
 }
+
+/* Add a professional 'lens' focus effect for non-active sections */
+@supports (animation-timeline: view()) {
+  .section {
+    view-timeline: --section-in-view y;
+  }
+
+  .snapping-content {
+    animation: focusSection linear both;
+    animation-timeline: --section-in-view;
+    animation-range: cover 0% cover 100%;
+  }
+
+  @keyframes focusSection {
+    0% { 
+      opacity: 0; 
+      transform: translateY(150px) scale(0.85); 
+      filter: blur(20px); 
+    }
+    35%, 65% { 
+      opacity: 1; 
+      transform: translateY(0) scale(1); 
+      filter: blur(0px); 
+    }
+    100% { 
+      opacity: 0; 
+      transform: translateY(-150px) scale(0.85); 
+      filter: blur(20px); 
+    }
+  }
+}
+
+/* Fallback for browsers that don't support scroll-linked animations (Safari/Firefox) */
+@media (prefers-reduced-motion: no-preference) {
+  @supports not (animation-timeline: view()) {
+    .snapping-content {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: blur(10px);
+    }
+
+    .snapping-content.in-view {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0px);
+    }
+    
+    /* When scrolling back up, we want it to fade out if not in view */
+    .snapping-content.out-view-top {
+      opacity: 0;
+      transform: translateY(-50px);
+      filter: blur(10px);
+    }
+  }
+}
+
 
 /* Spline Placeholder Wrapper */
 .spline-wrapper {

@@ -9,8 +9,8 @@ export default function Hero() {
 
   return (
     <section
+      className="section"
       style={{
-        height: '100vh',
         width: '100%',
         position: 'relative',
         display: 'flex',
@@ -18,7 +18,8 @@ export default function Hero() {
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
-        background: '#000'
+        background: '#000',
+        padding: 0 // Reset padding for full-screen hero
       }}
     >
       {/* 3D Scene Layer */}
@@ -63,7 +64,7 @@ export default function Hero() {
 
       {/* Hero Content - positioned OVER the 3D scene */}
       <div
-        className="fade-in-up"
+        className="snapping-content"
         style={{
           position: 'relative',
           zIndex: 10,

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function FeatureSplit({ title, description, reversed, imageUrl }) {
   return (
-    <div className={`feature-split fade-in-up ${reversed ? 'reversed' : ''}`}>
+    <div className={`feature-split snapping-content ${reversed ? 'reversed' : ''}`}>
       <div className="feature-text">
         <h3 className="text-headline" style={{ fontSize: 'clamp(1.5rem, 4vw, 3.5rem)' }}>{title}</h3>
         <p className="text-body">{description}</p>

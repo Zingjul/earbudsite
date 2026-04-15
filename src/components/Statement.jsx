@@ -3,7 +3,7 @@ import React from 'react';
 export default function Statement() {
   return (
     <section className="section" style={{ backgroundColor: '#050505' }}>
-      <div className="fade-in-up" style={{ textAlign: 'center', maxWidth: '800px', padding: '0 2rem' }}>
+      <div className="snapping-content" style={{ textAlign: 'center', maxWidth: '800px', padding: '0 2rem' }}>
         <h2 className="text-headline">
           The best thing you've never heard.
         </h2>
