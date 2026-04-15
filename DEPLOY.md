@@ -18,11 +18,13 @@ Vercel provides the most seamless experience for Vite-based React projects.
 5. Click **Deploy**.
 6. Each push to the `main` branch will automatically trigger a new deployment.
 
-## 2. Netlify
+## 2. Netlify (Automated)
+The project now includes a `netlify.toml` file, which makes deployment extremely simple:
+
 1. Go to [netlify.com](https://netlify.com) and log in.
 2. Click **Add new site** > **Import an existing project**.
 3. Connect with GitHub and select `earbudsite`.
-4. Ensure the build settings are:
+4. Netlify will automatically detect the settings from `netlify.toml`:
    - **Build command:** `npm run build`
    - **Publish directory:** `dist`
 5. Click **Deploy site**.
